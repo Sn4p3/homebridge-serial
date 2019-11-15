@@ -18,5 +18,6 @@
     "url": "https://github.com/Sn4p3/homebridge-serial.git"
   },
   "dependencies": {
+    "serialport": "serialport/node-serialport.git"
   }
 }
