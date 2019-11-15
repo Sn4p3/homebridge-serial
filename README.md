@@ -3,14 +3,12 @@ Example Config:
 ```
 "accessories": [
       {
-        "accessory": "UDP",
+        "accessory": "Serial",
         "name": "Light",
         "mode": "lightbulb",
         "modeConfig": {"hue": true, "saturation": true, "brightness": true},
-        "plugin": "IRRemote",
-
-        "host": "127.0.0.1",
-        "port": 1234
+        "port": "/dev/serial1",
+        "baudRate": 19200
       }
 }
 ```
