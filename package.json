@@ -1,0 +1,22 @@
+{
+  "name": "homebridge-udp-service",
+  "version": "0.0.1",
+  "description": "UDP plugin for homebridge: https://github.com/nfarina/homebridge",
+  "license": "MIT",
+  "keywords": [
+    "homebridge-plugin", "udp"
+  ],
+  "engines": {
+    "node": ">=0.12.0",
+    "homebridge": ">=0.2.0"
+  },
+  "author": {
+    "name": "Sn4p3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Sn4p3/homebridge-udp.git"
+  },
+  "dependencies": {
+  }
+}
