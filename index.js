@@ -23,7 +23,7 @@ function Serial(log, config) {
   this.serialPort = new SerialPort(port);
 }
 
-UDP.prototype.getServices = function() {
+Serial.prototype.getServices = function() {
   const informationService = new Service.AccessoryInformation();
   informationService.setCharacteristic(Characteristic.Manufacturer, "Sn4p3");
   informationService.setCharacteristic(Characteristic.Model, "Serial Service");
