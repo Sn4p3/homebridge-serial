@@ -105,11 +105,6 @@ function sendSerial(var) {
     //send 00+(000000)
     this.serialPort.write("00000000");
   }
-  var message = new Buffer('{"plugin": "$plugin", "var": "$variable", "value": $value}'.replace("$plugin", plugin).replace("$variable", variable).replace("$value", value));
-
-  client.send(message, 0, message.length, port, host, function(err, bytes) {
-    if (err) throw err;
-  });
 }
 
 Serial.prototype.setHue = function(hue, callback) {

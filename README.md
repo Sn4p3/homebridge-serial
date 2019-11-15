@@ -1,4 +1,4 @@
-# UDP-Plugin
+# Serial-Plugin
 Example Config:
 ```
 "accessories": [
