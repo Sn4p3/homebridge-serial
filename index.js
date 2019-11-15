@@ -20,7 +20,7 @@ function Serial(log, config) {
   this.lastBrightness = 0;
   this.lastSaturation = 0;
 
-  const this.serialPort = new SerialPort(port);
+  this.serialPort = new SerialPort(port);
 }
 
 UDP.prototype.getServices = function() {
@@ -97,11 +97,11 @@ function HSLToHex(h,s,l) {
   return r + g + b;
 }
 
-function sendSerial(var) {
-  if (var == "hue" || var == "saturation" || var == "brightness" || var = "on") {
+function sendSerial(variable) {
+  if (variable == "hue" || variable == "saturation" || variable == "brightness" || variable == "on") {
     //send 00+(rgb)
     this.serialPort.write("00" + HSLToHex(this.lastHue, this.lastSaturation, this.lastBrightness));
-  } else if (var == "off") {
+  } else if (variable == "off") {
     //send 00+(000000)
     this.serialPort.write("00000000");
   }
