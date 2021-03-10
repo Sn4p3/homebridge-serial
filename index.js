@@ -101,23 +101,17 @@ function HSLToHex(h,s,l) {
 }
 
 function sendSerial(variable) {
+	try {
   if (variable == "hue" || variable == "saturation" || variable == "brightness" || variable == "on") {
     //send 00+(rgb)
-    this.serialPort.write("00" + HSLToHex(this.lastHue, this.lastSaturation, this.lastBrightness), function(err) {
-  if (err) {
-    return console.log('Error on write: ', err.message)
-  }
-  console.log('message written')
-});
+    this.serialPort.write("00" + HSLToHex(this.lastHue, this.lastSaturation, this.lastBrightness));
   } else if (variable == "off") {
     //send 00+(000000)
-    this.serialPort.write("00000000", function(err) {
-  	if (err) {
-    		return console.log('Error on write: ', err.message)
-  	}
-  	console.log('message written')
-    });
+    this.serialPort.write("00000000");
   }
+	} catch(e) {
+		console.log(e);
+	}
 }
 
 Serial.prototype.setHue = function(hue, callback) {
