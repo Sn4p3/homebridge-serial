@@ -24,11 +24,13 @@ function Serial(log, config) {
   this.serialPort = new SerialPort(this.port, {
   	baudRate: this.baudRate
   });
-	
-	
-this.serialPort.on("open", function () {
-  console.log("open");
-});
+  this.serialPort.on('open',function(){
+    this.serialPort.write("FFFFFFFF", function(err, results) {
+        console.log('err ' + err);
+        console.log('results ' + results);
+    }); 
+    console.log("This is done.");
+  });
 }
 
 Serial.prototype.getServices = function() {
