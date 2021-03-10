@@ -24,7 +24,6 @@ function Serial(log, config) {
   serialPort = new SerialPort(this.port, {
   	baudRate: this.baudRate
   });
-	console.log(this.serialPort);
 }
 
 Serial.prototype.getServices = function() {
@@ -108,7 +107,7 @@ function sendSerial(variable) {
     serialPort.write("00" + HSLToHex(this.lastHue, this.lastSaturation, this.lastBrightness));
   } else if (variable == "off") {
     //send 00+(000000)
-    this.serialPort.write("00000000");
+    serialPort.write("00000000");
   }
 	} catch(e) {
 		console.log(e);
