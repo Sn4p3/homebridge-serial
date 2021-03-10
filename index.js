@@ -1,7 +1,7 @@
 var Service, Characteristic;
 
 const SerialPort = require('serialport')
-const serialPort
+const serialPort = null
 
 module.exports = function(homebridge) {
   Service = homebridge.hap.Service;
