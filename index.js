@@ -23,7 +23,7 @@ function Serial(log, config) {
   this.serialPort = new SerialPort(this.port, {
   	baudRate: this.baudRate
   });
-	port.on('error', function(err) {
+	this.serialPort.on('error', function(err) {
   console.log('Error: ', err.message)
 });
 }
