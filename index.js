@@ -23,6 +23,7 @@ function Serial(log, config) {
   this.serialPort = new SerialPort(this.port, {
   	baudRate: this.baudRate
   });
+	console.log("Setup complete!");
 }
 
 Serial.prototype.getServices = function() {
@@ -100,6 +101,7 @@ function HSLToHex(h,s,l) {
 }
 
 function sendSerial(variable) {
+	console.log("before sendSerial");
   if (variable == "hue" || variable == "saturation" || variable == "brightness" || variable == "on") {
     //send 00+(rgb)
     this.serialPort.write("00" + HSLToHex(this.lastHue, this.lastSaturation, this.lastBrightness));
