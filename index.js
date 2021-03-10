@@ -20,6 +20,10 @@ function Serial(log, config) {
   this.lastBrightness = 0;
   this.lastSaturation = 0;
 
+SerialPort.on("open", function () {
+  console.log("open");
+});
+	
   this.serialPort = new SerialPort(this.port, {
   	baudRate: this.baudRate
   });
