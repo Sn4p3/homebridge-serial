@@ -117,27 +117,27 @@ Serial.prototype.sendSerial = function(variable) {
 
 Serial.prototype.setHue = function(hue, callback) {
   this.lastHue = hue;
-  sendSerial("hue");
+  this.sendSerial("hue");
   callback();
 }
 
 Serial.prototype.setSaturation = function(saturation, callback) {
   this.lastSaturation = saturation;
-  sendSerial("saturation");
+  this.sendSerial("saturation");
   callback();
 }
 
 Serial.prototype.setBrightness = function(brightness, callback) {
   this.lastBrightness = brightness;
-  sendSerial("brightness");
+  this.sendSerial("brightness");
   callback();
 }
 
 Serial.prototype.setOn = function(on, callback) {
 	if (on == true) {
-    sendSerial("on");
+    this.sendSerial("on");
 	} else {
-    sendSerial("off");
+    this.sendSerial("off");
 	}
 	callback();
 }
