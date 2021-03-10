@@ -1,6 +1,6 @@
 var Service, Characteristic;
 
-const serialPort = require('serialport')
+const SerialPort = require('serialport')
 
 module.exports = function(homebridge) {
   Service = homebridge.hap.Service;
@@ -20,7 +20,6 @@ function Serial(log, config) {
   this.lastBrightness = 0;
   this.lastSaturation = 0;
 
-  var SerialPort = serialPort.SerialPort;
   this.serialPort = new SerialPort(this.port, {
   	baudRate: this.baudRate
   });
