@@ -121,7 +121,7 @@ Serial.prototype.setHue = function(hue, callback) {
 }
 
 Serial.prototype.setSaturation = function(saturation, callback) {
-  this.lastSaturation = setSaturation;
+  this.lastSaturation = saturation;
   sendSerial("saturation");
   callback();
 }
