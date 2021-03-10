@@ -108,15 +108,15 @@ function sendSerial(variable) {
     return console.log('Error on write: ', err.message)
   }
   console.log('message written')
-}));
+});
   } else if (variable == "off") {
     //send 00+(000000)
     this.serialPort.write("00000000", function(err) {
-  if (err) {
-    return console.log('Error on write: ', err.message)
-  }
-  console.log('message written')
-}));
+  	if (err) {
+    		return console.log('Error on write: ', err.message)
+  	}
+  	console.log('message written')
+    });
   }
 }
 
