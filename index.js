@@ -1,7 +1,6 @@
 var Service, Characteristic;
 
 const SerialPort = require('serialport')
-var serialPort = null
 
 module.exports = function(homebridge) {
   Service = homebridge.hap.Service;
@@ -21,7 +20,7 @@ function Serial(log, config) {
   this.lastBrightness = 0;
   this.lastSaturation = 0;
 
-  serialPort = new SerialPort(this.port, {
+  this.serialPort = new SerialPort(this.port, {
   	baudRate: this.baudRate
   });
 }
@@ -100,16 +99,16 @@ function HSLToHex(h,s,l) {
   return r + g + b;
 }
 
-function sendSerial(variable) {
+Serial.prototype.sendSerial = function(variable) {
 	try {
   if (variable == "hue" || variable == "saturation" || variable == "brightness" || variable == "on") {
     //send 00+(rgb)
-    serialPort.write("00" + HSLToHex(this.lastHue, this.lastSaturation, this.lastBrightness));
+    this.serialPort.write("00" + HSLToHex(this.lastHue, this.lastSaturation, this.lastBrightness));
 	  console.log("00" + HSLToHex(this.lastHue, this.lastSaturation, this.lastBrightness));
   } else if (variable == "off") {
     //send 00+(000000)
 	  console.log("00000000");
-    serialPort.write("00000000");
+    this.serialPort.write("00000000");
   }
 	} catch(e) {
 		console.log(e);
