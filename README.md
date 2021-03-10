@@ -12,6 +12,3 @@ Example Config:
       }
 }
 ```
-
-This accessory sends a udp-message containing a variable and its value parsed in json to a server.
-To receive this message, use the homebridge-udp-server. This server is written to handle the messages and pass them to the plugins.
