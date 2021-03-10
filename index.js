@@ -20,7 +20,7 @@ function Serial(log, config) {
   this.lastBrightness = 0;
   this.lastSaturation = 0;
 
-  this.serialPort = new SerialPort(port);
+  this.serialPort = new SerialPort(this.port);
 }
 
 Serial.prototype.getServices = function() {
