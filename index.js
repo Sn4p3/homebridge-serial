@@ -103,12 +103,12 @@ Serial.prototype.sendSerial = function(variable) {
 	try {
   if (variable == "hue" || variable == "saturation" || variable == "brightness" || variable == "on") {
     //send 00+(rgb)
-    this.serialPort.write("00" + HSLToHex(this.lastHue, this.lastSaturation, this.lastBrightness));
-	  console.log("00" + HSLToHex(this.lastHue, this.lastSaturation, this.lastBrightness));
+    this.serialPort.write(HSLToHex(this.lastHue, this.lastSaturation, this.lastBrightness) + '#');
+    console.log("#" + HSLToHex(this.lastHue, this.lastSaturation, this.lastBrightness));
   } else if (variable == "off") {
     //send 00+(000000)
-	  console.log("00000000");
-    this.serialPort.write("00000000");
+    console.log("#000000");
+    this.serialPort.write("000000" + '#');
   }
 	} catch(e) {
 		console.log(e);
