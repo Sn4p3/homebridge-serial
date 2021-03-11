@@ -59,23 +59,39 @@ Serial.prototype.getServices = function() {
   return [informationService, service];
 }
 
-function HSLToHex(h, s, l) {
-  l /= 100;
-  const a = s * Math.min(l, 1 - l) / 100;
-  const f = n => {
-    const k = (n + h / 30) % 12;
-    const color = l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
-    return Math.round(255 * color).toString(16).padStart(2, '0');   // convert to Hex and prefix "0" if needed
-  };
-  return `#${f(0)}${f(8)}${f(4)}`;
+
+function componentToHex(c) {
+  var hex = c.toString(16);
+  return hex.length == 1 ? "0" + hex : hex;
+}
+
+function HSVtoHEX(h, s, v) {
+  var r, g, b;
+
+  var i = Math.floor(h * 6);
+  var f = h * 6 - i;
+  var p = v * (1 - s);
+  var q = v * (1 - f * s);
+  var t = v * (1 - (1 - f) * s);
+
+  switch (i % 6) {
+    case 0: r = v, g = t, b = p; break;
+    case 1: r = q, g = v, b = p; break;
+    case 2: r = p, g = v, b = t; break;
+    case 3: r = p, g = q, b = v; break;
+    case 4: r = t, g = p, b = v; break;
+    case 5: r = v, g = p, b = q; break;
+  }
+
+  return "#" + componentToHex(r*255) + componentToHex(g*255) + componentToHex(b*255);
 }
 
 Serial.prototype.sendSerial = function(variable) {
 	try {
   if (variable == "hue" || variable == "saturation" || variable == "brightness" || variable == "on") {
     //send 00+(rgb)
-    this.serialPort.write(HSLToHex(this.lastHue, this.lastSaturation, this.lastBrightness) + '#');
-    console.log("#" + HSLToHex(this.lastHue, this.lastSaturation, this.lastBrightness));
+    this.serialPort.write(HSVtoHEX(this.lastHue, this.lastSaturation, this.lastBrightness) + '#');
+    console.log("#" + HSVtoHEX(this.lastHue, this.lastSaturation, this.lastBrightness));
   } else if (variable == "off") {
     //send 00+(000000)
     console.log("#000000");
