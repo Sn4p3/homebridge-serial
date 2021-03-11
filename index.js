@@ -89,7 +89,7 @@ function HSVtoHEX(h, s, v) {
 Serial.prototype.sendSerial = function(variable) {
 	try {
   if (variable == "hue" || variable == "saturation" || variable == "brightness" || variable == "on") {
-    var hex = HSVtoHEX(this.lastHue, this.lastSaturation, this.lastBrightness);
+    var hex = HSVtoHEX(this.lastHue / 360, this.lastSaturation / 100, this.lastBrightness / 100);
 	  console.log("Last hue: " + this.lastHue);
 	  console.log("Last hue: " + this.lastSaturation);
 	  console.log("Last hue: " + this.lastBrightness);
