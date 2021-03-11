@@ -83,7 +83,7 @@ function HSVtoHEX(h, s, v) {
     case 5: r = v, g = p, b = q; break;
   }
 
-  return "#" + componentToHex(r*255) + componentToHex(g*255) + componentToHex(b*255);
+  return componentToHex(r*255) + componentToHex(g*255) + componentToHex(b*255);
 }
 
 Serial.prototype.sendSerial = function(variable) {
