@@ -89,11 +89,10 @@ function HSVtoHEX(h, s, v) {
 Serial.prototype.sendSerial = function(variable) {
 	try {
   if (variable == "hue" || variable == "saturation" || variable == "brightness" || variable == "on") {
-    //send 00+(rgb)
-    this.serialPort.write(HSVtoHEX(this.lastHue, this.lastSaturation, this.lastBrightness) + '#');
-    console.log("#" + HSVtoHEX(this.lastHue, this.lastSaturation, this.lastBrightness));
+    var hex = HSVtoHEX(this.lastHue / 360, this.lastSaturation / 100, this.lastBrightness / 100);
+    this.serialPort.write(hex + '#');
+    console.log("#" + hex);
   } else if (variable == "off") {
-    //send 00+(000000)
     console.log("#000000");
     this.serialPort.write("000000" + '#');
   }
