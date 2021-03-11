@@ -83,13 +83,16 @@ function HSVtoHEX(h, s, v) {
     case 5: r = v, g = p, b = q; break;
   }
 
-  return componentToHex(r*255) + componentToHex(g*255) + componentToHex(b*255);
+  return componentToHex(Math.round(r*255)) + componentToHex(Math.round(g*255)) + componentToHex(Math.round(b*255));
 }
 
 Serial.prototype.sendSerial = function(variable) {
 	try {
   if (variable == "hue" || variable == "saturation" || variable == "brightness" || variable == "on") {
-    var hex = HSVtoHEX(this.lastHue / 360, this.lastSaturation / 100, this.lastBrightness / 100);
+    var hex = HSVtoHEX(this.lastHue, this.lastSaturation, this.lastBrightness);
+	  console.log("Last hue: " + this.lastHue);
+	  console.log("Last hue: " + this.lastSaturation);
+	  console.log("Last hue: " + this.lastBrightness);
     this.serialPort.write(hex + '#');
     console.log("#" + hex);
   } else if (variable == "off") {
